@@ -9,6 +9,15 @@ const createVueInstanceForNormalMessage = () => {
     })
 }
 
+const createForLoopVueInstance = () => {
+    return new Vue({
+        el : '#for-app',
+        data : {
+            texts : ['ab', 'cd', 'er', 'nk']
+        }
+    })
+}
+
 async function fetchVueFromCDN(){
     return await fetch("https://cdn.jsdelivr.net/npm/vue")
 }
@@ -27,15 +36,17 @@ async function injectVueFromCDN() {
     document.body.appendChild(script)
 }
 
-async function createVueInstancePostLoad() {
+async function createVueInstancePostLoad(cb) {
     const prevTime = currTimeInSeconds()
     await injectVueFromCDN()
     const currTime = currTimeInSeconds()
     console.log(currTime - prevTime)
-    const vm = createVueInstanceForNormalMessage()
-    console.log(vm)
+    cb()
 }
 
 const currTimeInSeconds = () => new Date().getTime()
 
-createVueInstancePostLoad()
+createVueInstancePostLoad(() => {
+    createVueInstanceForNormalMessage()
+    createForLoopVueInstance()
+})
