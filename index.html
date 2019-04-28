@@ -8,6 +8,15 @@
         {{text}}
     </div>
 </div>
+
+<div id="cond-app">
+    <div v-if = "seen">
+        based upon a boolean
+    </div>
+    <button v-on:click = "toggleShown">
+        toggle
+    </button>
+</div>
 <script src="index.js">
 </script>
 </body>

@@ -18,6 +18,20 @@ const createForLoopVueInstance = () => {
     })
 }
 
+const createConditionalVueInstance = () => {
+    return new Vue({
+        el : '#cond-app',
+        data : {
+            seen : true
+        },
+        methods : {
+            toggleShown() {
+                this.seen = !this.seen
+            }
+        }
+    })
+}
+
 async function fetchVueFromCDN(){
     return await fetch("https://cdn.jsdelivr.net/npm/vue")
 }
@@ -49,4 +63,5 @@ const currTimeInSeconds = () => new Date().getTime()
 createVueInstancePostLoad(() => {
     createVueInstanceForNormalMessage()
     createForLoopVueInstance()
+    createConditionalVueInstance()
 })
