@@ -1,4 +1,4 @@
-
+import {createVueInstancePostLoad} from './vue-loader.mjs'
 
 const createVueInstanceForNormalMessage = () => {
     return new Vue({
@@ -33,7 +33,7 @@ const createConditionalVueInstance = () => {
 }
 
 
-const currTimeInSeconds = () => new Date().getTime()
+
 
 createVueInstancePostLoad(() => {
     createVueInstanceForNormalMessage()

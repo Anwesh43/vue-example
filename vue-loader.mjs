@@ -1,3 +1,5 @@
+const currTimeInSeconds = () => new Date().getTime()
+
 async function fetchVueFromCDN(){
     return await fetch("https://cdn.jsdelivr.net/npm/vue")
 }
@@ -16,7 +18,7 @@ async function injectVueFromCDN() {
     document.body.appendChild(script)
 }
 
-async function createVueInstancePostLoad(cb) {
+export async function createVueInstancePostLoad(cb) {
     const prevTime = currTimeInSeconds()
     await injectVueFromCDN()
     const currTime = currTimeInSeconds()
