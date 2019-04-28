@@ -18,7 +18,7 @@ async function injectVueFromCDN() {
     document.body.appendChild(script)
 }
 
-export async function createVueInstancePostLoad(cb) {
+export async function executePostVueLoad(cb) {
     const prevTime = currTimeInSeconds()
     await injectVueFromCDN()
     const currTime = currTimeInSeconds()

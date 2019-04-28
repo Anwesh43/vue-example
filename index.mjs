@@ -1,4 +1,4 @@
-import {createVueInstancePostLoad} from './vue-loader.mjs'
+import {executePostVueLoad} from './vue-loader.mjs'
 
 const createVueInstanceForNormalMessage = () => {
     return new Vue({
@@ -35,7 +35,7 @@ const createConditionalVueInstance = () => {
 
 
 
-createVueInstancePostLoad(() => {
+executePostVueLoad(() => {
     createVueInstanceForNormalMessage()
     createForLoopVueInstance()
     createConditionalVueInstance()
